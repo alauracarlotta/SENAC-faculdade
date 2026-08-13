@@ -1,6 +1,6 @@
 # Topicos
 
-```
+```m
 /1-semestre
 |----/pensamento-computacional
 |----|----/web2
@@ -20,7 +20,9 @@
 
 /2-semestre
 |----/praticas_de_programacao
+|
 |----|----/aula1-programacao-estruturada
+|
 |----|----|----/1-funcoes-e-procedimentos
 |----|----|----|----1-processamento-em-nucleo-unico.py
 |----|----|----|----2-processamento-com-nucleos-distribuidos.py
@@ -36,7 +38,9 @@
 |----|----|----media_notas.py
 |
 |
+|
 |----|----/aula2-listas
+|
 |----|----|----/1-estruturas-unidimensionais
 |----|----|----|----1-lista-homogenea.py
 |----|----|----|----2-lista-heterogenea.py
@@ -56,6 +60,49 @@
 |----|----|----|----test-json.py
 |
 |
+|
 |----|----/aula3-fatiamento(slicing)
 |
+|----|----|----fatiamento.py
+|----|----|----operacoes-com-strings.py
+|----|----|----slincing-e-limpeza-de-dados.py
+|
+|
+|
+|----|----/aula4-tuplas-e-dicionarios
+|
+|----|----|----tuplas-e-dicionario-em-funcoes.py
+|
+|
+|
+|----|----/aula5-funcao-lambda
+|
+|----|----|----funcao-lambda.py
+|----|----|----funcoes-sort-map-list.py
+|----|----|----ganho-no-processamento-dados.py
+|----|----|----test.py
+|
+|
+|
+|----|----/aula6-tratamento-de-excecoes
+|
+|----|----|----1-try-except.py
+|----|----|----2-invocando-excecoes-manualmente.py
+|----|----|----3-geracao-de-logs-e-o-tratamento-de-excecoes.py
+|
+|
+|
+|----|----/aula7-arquivos
+|
+|----|----|----1-arquivos-texto.py
+|----|----|----2-arquivos-binarios.py
+|----|----|----3-tokens.py
+|
+|
+|
+|----|----/aula8-Gerenciamento de módulos
+|
+|----|----|----1-gerenciamento-de-modulos-com-pip.py
+|----|----|----2-ambientes-virtuais.py
+|----|----|----3-criando-seus-proprios-modulos.md
 ```
