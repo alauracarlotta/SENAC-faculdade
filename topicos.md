@@ -1,6 +1,6 @@
 # Topicos
 
-```
+```m
 /1-semestre
 |----/pensamento-computacional
 |----|----/web2
@@ -102,5 +102,7 @@
 |
 |----|----/aula8-Gerenciamento de módulos
 |
-|----|----|----
+|----|----|----1-gerenciamento-de-modulos-com-pip.py
+|----|----|----2-ambientes-virtuais.py
+|----|----|----3-criando-seus-proprios-modulos.md
 ```
