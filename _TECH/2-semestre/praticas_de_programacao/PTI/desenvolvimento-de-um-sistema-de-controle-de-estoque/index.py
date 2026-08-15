@@ -10,6 +10,8 @@ error_message = {
 	"code_error_product": "⚠️  Informe um código válido para o produto.\n",
 	"name_error_product": "⚠️  Informe corretamente o nome do produto.\n",
 	"price_error_product": "⚠️  Informe o valor correto do produto.\n",
+	"quantity_error_product": "⚠️  Informe a quantidade correta do produto.\n",
+}
 
 """ new_product = {
 		"codigo": 123,
@@ -145,6 +147,13 @@ def price_product():
 			return f"R$ {new_price:.2f}".replace('.', ',')
 		except ValueError:
 			incorrect_option(error_message["price_error_product"])
+
+
+#! TODO: Implementar lógica de validação de quantidade não negativos!
+#& - quantidade
+def quantity_product():
+	new_quantity = int(input('Informe a quantidade de itens do produto: '))
+	return new_quantity
 
 
 while True:
