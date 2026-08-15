@@ -74,13 +74,32 @@ error_message = {
 	}
 
     stock.append(new_product)
-    print(stock) # TODO: Adicionar msg de 'item cadastrado com sucesso'
 
 
-#! TODO: Adicionar Tabela de apresentação de estoque
-#& 2 - Apresentar tabela de estoque
-def display_stock():
-	return
+def display_stock() -> None:
+	"""Formata e exibe os produtos cadastrados em formato de tabela no terminal.
+
+    Utiliza a biblioteca 'tabulate' para gerar a visualização do estoque.
+    Caso o estoque esteja vazio, exibe uma mensagem informativa de erro.
+    """
+	print("\n--- Produtos em Estoque ---")
+
+	if not stock:
+		print(error_message["calculate_total_stock_error_message"])
+		return
+
+	formatted_stock = []
+	for item in stock:
+		formatted_stock.append({
+			"Código": item["code"],
+			"Nome": item["name"],
+			"Preço (R$)": f"{item['price']}" if isinstance(item['price'], str) else f"R$ {item['price']:.2f}".replace('.', ','),
+			"Quantidade": item["quantity"]
+		})
+
+	print(tabulate(formatted_stock, headers="keys", tablefmt="fancy_grid"))
+	print("=====================================================\n")
+
 
     """Calcula e exibe a quantidade total somada de itens presentes no estoque via função lambda.
 
