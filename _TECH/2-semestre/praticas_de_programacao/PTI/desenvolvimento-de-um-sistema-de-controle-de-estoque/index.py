@@ -162,11 +162,28 @@ def get_product_price():
 			incorrect_option(error_message["price_error_product"])
 
 
-#! TODO: Implementar lógica de validação de quantidade não negativos!
-#& - quantidade
-def get_product_quantity():
+def get_product_quantity() -> int:
+	"""Solicita e valida a quantidade de itens do produto.
 
+    Garante que a entrada seja um número inteiro positivo.
 
+    Returns:
+        int: Quantidade de itens em estoque.
+    """
+
+	while True:
+		try:
+			entry = input('Informe a quantidade de itens do produto: ').strip()
+			print('----------------------------------------')
+
+			new_quantity = int(entry)
+			
+			if new_quantity <= 0:
+				incorrect_option(error_message["quantity_error_product"])
+				continue
+			return new_quantity
+		except ValueError:
+			incorrect_option(error_message["quantity_error_product"])
 while True:
 	value_menu = display_menu()
 	if value_menu == 1:
