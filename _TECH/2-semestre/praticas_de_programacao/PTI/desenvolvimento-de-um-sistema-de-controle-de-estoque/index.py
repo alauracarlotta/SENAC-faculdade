@@ -1,4 +1,10 @@
 import time
+import regex
+
+#? [ ] Remover prints
+#? [ ] Remover comentários
+#? [ ] Verificar 'docstrings' de cada função.
+#? [ ] Add README.md 
 
 # Lista principal para armazenar os dicionários dos produtos
 stock = []
@@ -166,18 +172,18 @@ def quantity_product():
 while True:
 	value_menu = display_menu()
 	if value_menu == 1:
-		print('cadastrar produto')
 		register_product()
 
-	# ok
+# TODO: Adicionar Tabela de apresentação de estoque
 	elif value_menu == 2:
-		print(f'Valor total: {calculate_total_stock()} itens. \n')
+		display_stock()
 
-	# ok
+	elif value_menu == 3:
+		calculate_total_stock()
+
 	elif value_menu == 0:
 		break
-	
-	# ok
+
 	else:
 		incorrect_option(error_message["menu_error"])
 
