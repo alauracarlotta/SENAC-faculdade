@@ -1,4 +1,11 @@
-import time
+"""
+Sistema de Gerenciamento de Estoque (CLI)
+
+Este script gerencia o cadastro, exibição e cálculo de produtos em estoque
+utilizando uma interface baseada em terminal (CLI).
+"""
+
+
 import regex
 
 #? [ ] Remover prints
@@ -19,25 +26,20 @@ error_message = {
 	"quantity_error_product": "⚠️  Informe a quantidade correta do produto.\n",
 }
 
-""" new_product = {
-		"codigo": 123,
-		"nome": 'test1',
-		"preco": 50.00,
-		"quantidade": 10
-"""
+	"""Exibe no terminal uma mensagem padronizada para entradas e opções inválidas.
 
-
-#* ok
-#& * - Mensagens de erro
-def incorrect_option(code_error):
+    Args:
+        code_error (str): Mensagem de erro específica a ser apresentada ao usuário.
+    """
 	print("\n⚠️  OPÇÃO INVÁLIDA ou DIGITAÇÃO INCORRETA.")
 	print(code_error)
 
 
-#* ok 
-#& 0 - Apresentar Menu
-def display_menu() :
-	"""Exibe o menu de opções e retorna a escolha do usuário."""
+	"""Exibe o menu principal de navegação e captura a escolha do usuário.
+
+    Returns:
+        int: O número da opção selecionada pelo usuário ou -1 em caso de entrada inválida.
+    """
 	print('================== MENU =================')
 	print('1 - Cadastrar Produto')
 	print('2 - Visualizar Estoque (Tabela)') # <--- Nova opção!
@@ -52,11 +54,11 @@ def display_menu() :
 
 
 #! TODO: Padronizar variáveis? pt ou en?
-#! TODO: Passar param para funções
-#! TODO: Ex.: code = code_product(input('Informe o código de barras do produto: ')) => Posso usar 'continue', 'pass', etc...
-#& 1 - Cadastrar produto
-def register_product():
-    """Função que será responsável pelo cadastro de produto e validações."""
+    """Gerencia o fluxo completo de cadastro de um novo produto no estoque.
+
+    Solicita e valida código, nome, preço e quantidade antes de armazenar
+    o item no dicionário global de estoque.
+    """
     print("\n--- Cadastrar Produto ---")
     code = get_product_code()
     name = get_product_name()
@@ -80,11 +82,10 @@ def register_product():
 def display_stock():
 	return
 
+    """Calcula e exibe a quantidade total somada de itens presentes no estoque via função lambda.
 
-#* ok
-#& 3 - Calcula total de estoque
-def calculate_total_stock():
-    """Função que fará a soma de todas as quantidades."""
+    Soma as quantidades de todos os produtos cadastrados e exibe o resultado.
+    """
     print("\n--- Total de Produtos em Estoque ---")
 
     if len(stock) > 0:
@@ -95,15 +96,15 @@ def calculate_total_stock():
         print(error_message["calculate_total_stock_error_message"])
 
 
-#* ok
-#& * - codigo
-def get_product_code():
-	"""Implementa validação de código do produto duplicado"""
-	print('entrei no code product')
-	while True:
-		try:
-			entry = input('Informe o código de barras do produto: ').strip()
-			new_code = int(entry)
+    """Solicita e valida o código de barras do produto.
+
+    Garante que a entrada contenha apenas dígitos (até 13 caracteres),
+    preenche com zeros à direita até atingir 13 dígitos (`ljust`) e
+    verifica a ausência de duplicatas na lista de estoque.
+
+    Returns:
+        int: Código de barras validado e convertido para número inteiro.
+    """
 
 			if new_code < 0:
 				incorrect_option(error_message["code_error_product"])
@@ -114,19 +115,12 @@ def get_product_code():
 		except ValueError:
 			incorrect_option(error_message["code_error_product"])
 
-#* ok
-#& * - nome
-def get_product_name():
-	print('entrei no NAME product')
-	"""
-    Valida se a entrada atende aos requisitos mínimos de formato.
+	"""Solicita e valida o nome do produto através de expressões regulares (Regex).
 
-    Regras de validação:
-    - Comprimento mínimo de 3 caracteres (aceita qualquer caractere).
-    - Exige pelo menos 2 letras em qualquer posição (suporta acentuação, cedilha e caracteres Unicode via \p{L}).
+    Exige no mínimo 3 caracteres no total e pelo menos 3 letras (suportando Unicode/acentuação).
 
-    Exemplos válidos:   'açó', 'a1b', 'café', 'pão1'
-    Exemplos inválidos: 'ab' (< 3 caracteres), 'a12' (< 2 letras), '123' (sem letras)
+    Returns:
+        str: Nome do produto validado.
     """
 
 	valid_name_regex = r"^(?=(?:.*\p{L}){2,}).{3,}$"
@@ -143,10 +137,14 @@ def get_product_name():
 			incorrect_option(error_message["name_error_product"])
 
 
-#! TODO: Implementar lógica de validação de preço não negativos!
-#& - preço
-def get_product_price():
-	print('entrei no PRICE product')
+	"""Solicita e valida o preço unitário do produto.
+
+    Garante que o valor digitado não seja negativo e o converte para o formato
+    monetário brasileiro (R$ X,XX).
+
+    Returns:
+        str: Preço formatado em string como moeda brasileira.
+    """
 	while True:
 		try:
 			# Troca vírgula por ponto para aceitar entradas como 10,50
@@ -184,6 +182,9 @@ def get_product_quantity() -> int:
 			return new_quantity
 		except ValueError:
 			incorrect_option(error_message["quantity_error_product"])
+
+
+# Loop principal de execução do menu
 while True:
 	value_menu = display_menu()
 	if value_menu == 1:
@@ -205,4 +206,4 @@ while True:
 
 print('\n...ENCERRANDO O SISTEMA:')
 time.sleep(2)
-print('Obrigado(a) por usar o nosso programa! ✨')
+print(f'{ITALIC}{BOLD}Obrigado(a) por usar o nosso programa! ✨{RESET}')
