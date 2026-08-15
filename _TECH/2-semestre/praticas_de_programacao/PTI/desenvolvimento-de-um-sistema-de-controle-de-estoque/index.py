@@ -28,11 +28,14 @@ def incorrect_option(code_error):
 	print(code_error)
 
 
+#* ok 
+#& 0 - Apresentar Menu
 def display_menu() :
 	"""Exibe o menu de opções e retorna a escolha do usuário."""
 	print('================== MENU =================')
 	print('1 - Cadastrar Produto')
-	print('2 - Calcular Total de Produtos em Estoque')
+	print('2 - Visualizar Estoque (Tabela)') # <--- Nova opção!
+	print('3 - Calcular Total de Produtos em Estoque')
 	print('0 - SAIR')
 	print('=========================================')
 	try:
@@ -66,6 +69,10 @@ def register_product():
     print(stock) # TODO: Adicionar msg de 'item cadastrado com sucesso'
 
 
+#! TODO: Adicionar Tabela de apresentação de estoque
+#& 2 - Apresentar tabela de estoque
+def display_stock():
+	return
 
 
 #* ok
