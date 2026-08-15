@@ -40,31 +40,28 @@ def display_menu() :
 		return -1
 
 
-# ok
-def incorrect_option(code_error):
-	print("\n⚠️  OPÇÃO INVÁLIDA ou DIGITAÇÃO INCORRETA.")
-	print(code_error)
-
-
-# ok
-def calculate_total_stock():
-    """Função que fará a soma de todas as quantidades."""
-    print("\n--- Total de Produtos em Estoque ---")
-    stock_total = sum(map(lambda x: x["quantidade"], stock))
-    return stock_total
-
-
-# TODO: Implementar lógica de cadastro, validação de código duplicado
-# e validação de preço/quantidade não negativos!
+#! TODO: Padronizar variáveis? pt ou en?
+#! TODO: Passar param para funções
+#! TODO: Ex.: code = code_product(input('Informe o código de barras do produto: ')) => Posso usar 'continue', 'pass', etc...
+#& 1 - Cadastrar produto
 def register_product():
-    """Função que será responsável pelo cadastro e validações."""
+    """Função que será responsável pelo cadastro de produto e validações."""
     print("\n--- Cadastrar Produto ---")
     code = code_product()
+    name = name_product()
+    price = price_product()
+    quantity = quantity_product()
+    
+    # TODO: verificar a ebição do está cadastrado.
     new_product = {
-		"codigo": code
+		"codigo": code,
+		"nome": name,
+		"preco": price,
+		"quantidade": quantity
 	}
+
     stock.append(new_product)
-    print(stock)
+    print(stock) # TODO: Adicionar msg de 'item cadastrado com sucesso'
 
 
 
