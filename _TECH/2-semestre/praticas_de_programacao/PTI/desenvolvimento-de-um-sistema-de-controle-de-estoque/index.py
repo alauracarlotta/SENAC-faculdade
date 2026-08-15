@@ -32,6 +32,7 @@ stock = [
 error_message = {
 	"menu_error": "⚠️  Por favor, escolha uma das opções válidas do menu.\n",
 	"code_error_product": "⚠️  Informe um código válido para o produto.\n",
+	"name_error_product": "⚠️  Informe corretamente o nome do produto.\n",
 	"price_error_product": "⚠️  Informe o valor correto do produto.\n",
 
 """ new_product = {
@@ -103,6 +104,33 @@ def code_product():
 		except ValueError:
 			incorrect_option(error_message["code_error_product"])
 
+#* ok
+#& * - nome
+def name_product():
+	print('entrei no NAME product')
+	"""
+    Valida se a entrada atende aos requisitos mínimos de formato.
+
+    Regras de validação:
+    - Comprimento mínimo de 3 caracteres (aceita qualquer caractere).
+    - Exige pelo menos 2 letras em qualquer posição (suporta acentuação, cedilha e caracteres Unicode via \p{L}).
+
+    Exemplos válidos:   'açó', 'a1b', 'café', 'pão1'
+    Exemplos inválidos: 'ab' (< 3 caracteres), 'a12' (< 2 letras), '123' (sem letras)
+    """
+
+	valid_name_regex = r"^(?=(?:.*\p{L}){2,}).{3,}$"
+	while True:
+		try:
+			new_name = input('Informe o nome do produto: ')
+			if regex.search(valid_name_regex, new_name):
+				return new_name
+			else:
+				print('else name')
+				incorrect_option(error_message["name_error_product"])
+		except ValueError:
+			print('except')
+			incorrect_option(error_message["name_error_product"])
 
 
 #! TODO: Implementar lógica de validação de preço não negativos!
