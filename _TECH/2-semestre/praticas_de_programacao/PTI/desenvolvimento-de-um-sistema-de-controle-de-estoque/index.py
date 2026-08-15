@@ -32,6 +32,7 @@ stock = [
 error_message = {
 	"menu_error": "⚠️  Por favor, escolha uma das opções válidas do menu.\n",
 	"code_error_product": "⚠️  Informe um código válido para o produto.\n",
+	"price_error_product": "⚠️  Informe o valor correto do produto.\n",
 
 """ new_product = {
 		"codigo": 123,
@@ -103,14 +104,24 @@ def code_product():
 			incorrect_option(error_message["code_error_product"])
 
 
-# TODO: Implementar lógica de validação de preço não negativos!
-def price_product(price):
-	return price
 
+#! TODO: Implementar lógica de validação de preço não negativos!
+#& - preço
+def price_product():
+	print('entrei no PRICE product')
+	while True:
+		try:
+			# Troca vírgula por ponto para aceitar entradas como 10,50
+			entry = input('Informe o preço do produto: R$ ').strip().replace(',', '.')
+			new_price = float(entry)
+			
+			if new_price < 0:
+				incorrect_option(error_message["price_error_product"])
+				continue # Volta para o início do loop em caso de preço negativo
 
-# TODO: Implementar lógica de validação de quantidade não negativos!
-def quantity_product(quantity):
-	return quantity
+			return f"R$ {new_price:.2f}".replace('.', ',')
+		except ValueError:
+			incorrect_option(error_message["price_error_product"])
 
 
 while True:
