@@ -16,11 +16,16 @@ error_message = {
 		"nome": 'test1',
 		"preco": 50.00,
 		"quantidade": 10
-	}
+"""
 
-    stock.append(new_product) """
 
-# ok
+#* ok
+#& * - Mensagens de erro
+def incorrect_option(code_error):
+	print("\n⚠️  OPÇÃO INVÁLIDA ou DIGITAÇÃO INCORRETA.")
+	print(code_error)
+
+
 def display_menu() :
 	"""Exibe o menu de opções e retorna a escolha do usuário."""
 	print('================== MENU =================')
