@@ -1,7 +1,38 @@
 import time
 
 # Lista principal para armazenar os dicionários dos produtos
-stock = []
+stock = [
+	{
+		"codigo": 1234,
+		"nome": 'test1',
+		"preco": 50.00,
+		"quantidade": 10
+	},
+	{
+		"codigo": 1235,
+		"nome": 'test1',
+		"preco": 50.00,
+		"quantidade": 10
+	},
+	{
+		"codigo": 1236,
+		"nome": 'test1',
+		"preco": 50.00,
+		"quantidade": 10
+	},
+	{
+		"codigo": 1237,
+		"nome": 'test1',
+		"preco": 50.00,
+		"quantidade": 10
+	}
+]
+
+# Lista com mensagens de erro
+error_message = {
+	"menu_error": "⚠️  Por favor, escolha uma das opções válidas do menu.\n",
+	"code_error_product": "⚠️  Informe um código válido para o produto.\n"
+}
 
 """ new_product = {
 	"codigo": int(input('Informe o código de barras do produto: ')),
@@ -33,10 +64,12 @@ def display_menu() :
 	except ValueError:
 		return -1
 
+
 # ok
-def incorrect_option():
+def incorrect_option(code_error):
 	print("\n⚠️  OPÇÃO INVÁLIDA ou DIGITAÇÃO INCORRETA.")
-	print("Por favor, escolha uma das opções válidas do menu.\n")
+	print(code_error)
+
 
 # ok
 def calculate_total_stock():
@@ -51,11 +84,28 @@ def calculate_total_stock():
 def register_product():
     """Função que será responsável pelo cadastro e validações."""
     print("\n--- Cadastrar Produto ---")
+    code = code_product()
+    new_product = {
+		"codigo": code
+	}
+    stock.append(new_product)
+    print(stock)
 
 
 # TODO: Implementar lógica de validação de código duplicado
-def code_product(code):
-	return code
+def code_product():
+	print('entrei no code product')
+	while True:
+		try:
+			new_code = int(input('Informe o código de barras do produto: '))
+			if new_code < 0:
+				incorrect_option(error_message["code_error_product"])
+			elif not new_code in list(map(lambda x: x['codigo'], stock)):
+				return new_code
+			else:
+				print(f'\nO código {new_code} é de um produto já registrado. Adicione um novo código!\n')
+		except ValueError:
+			incorrect_option(error_message["code_error_product"])
 
 
 # TODO: Implementar lógica de validação de preço não negativos!
@@ -84,7 +134,7 @@ while True:
 	
 	# ok
 	else:
-		incorrect_option()
+		incorrect_option(error_message["menu_error"])
 
 
 print('\n...ENCERRANDO O SISTEMA:')
