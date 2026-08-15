@@ -1,6 +1,17 @@
-# Topicos
+# SENAC-faculdade
+Exercícios e materiais em Python para a graduação em Análise e Desenvolvimento de Sistemas (SENAC EAD).
+
+## Sobre
+Coleção organizada de exercícios, materiais de apoio e documentos do curso (semestres, projeto integrador e materiais técnicos). Destinado a estudantes que querem centralizar e consultar atividades e referências do curso.
+
+## Stack
+- Linguagem principal: Python
+- Formato do conteúdo: scripts Python, arquivos Markdown, PDFs e CSVs
+
+## Estrutura do repositório
 
 ```m
+/_TECH
 /1-semestre
 |----/pensamento-computacional
 |----|----/web2
