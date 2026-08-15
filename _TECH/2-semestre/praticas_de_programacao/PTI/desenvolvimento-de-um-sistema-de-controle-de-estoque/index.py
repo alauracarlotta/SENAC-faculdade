@@ -45,8 +45,8 @@ def display_menu() :
 	print('0 - SAIR')
 	print('=========================================')
 	try:
-		value_option = int(input('Informe a opção desejada: '))
-		return value_option
+		menu_option = int(input('Informe a opção desejada: '))
+		return menu_option
 	except ValueError:
 		return -1
 
@@ -58,17 +58,17 @@ def display_menu() :
 def register_product():
     """Função que será responsável pelo cadastro de produto e validações."""
     print("\n--- Cadastrar Produto ---")
-    code = code_product()
-    name = name_product()
-    price = price_product()
-    quantity = quantity_product()
+    code = get_product_code()
+    name = get_product_name()
+    price = get_product_price()
+    quantity = get_product_quantity()
     
     # TODO: verificar a ebição do está cadastrado.
     new_product = {
-		"codigo": code,
-		"nome": name,
-		"preco": price,
-		"quantidade": quantity
+		"code": code,
+		"name": name,
+		"price": price,
+		"quantity": quantity
 	}
 
     stock.append(new_product)
@@ -97,7 +97,7 @@ def calculate_total_stock():
 
 #* ok
 #& * - codigo
-def code_product():
+def get_product_code():
 	"""Implementa validação de código do produto duplicado"""
 	print('entrei no code product')
 	while True:
@@ -116,7 +116,7 @@ def code_product():
 
 #* ok
 #& * - nome
-def name_product():
+def get_product_name():
 	print('entrei no NAME product')
 	"""
     Valida se a entrada atende aos requisitos mínimos de formato.
@@ -145,7 +145,7 @@ def name_product():
 
 #! TODO: Implementar lógica de validação de preço não negativos!
 #& - preço
-def price_product():
+def get_product_price():
 	print('entrei no PRICE product')
 	while True:
 		try:
@@ -164,9 +164,7 @@ def price_product():
 
 #! TODO: Implementar lógica de validação de quantidade não negativos!
 #& - quantidade
-def quantity_product():
-	new_quantity = int(input('Informe a quantidade de itens do produto: '))
-	return new_quantity
+def get_product_quantity():
 
 
 while True:
