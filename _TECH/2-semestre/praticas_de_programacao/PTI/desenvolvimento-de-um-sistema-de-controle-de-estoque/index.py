@@ -31,15 +31,7 @@ stock = [
 # Lista com mensagens de erro
 error_message = {
 	"menu_error": "⚠️  Por favor, escolha uma das opções válidas do menu.\n",
-	"code_error_product": "⚠️  Informe um código válido para o produto.\n"
-}
-
-""" new_product = {
-	"codigo": int(input('Informe o código de barras do produto: ')),
-	"nome": input('Informe o nome do produto: '),
-	"preco": float(input('Informe o preço do produto: R$ ')),
-	"quantidade": int(input('Informe a quantidade de itens do produto: '))
-} """
+	"code_error_product": "⚠️  Informe um código válido para o produto.\n",
 
 """ new_product = {
 		"codigo": 123,
@@ -94,10 +86,13 @@ def register_product():
 
 # TODO: Implementar lógica de validação de código duplicado
 def code_product():
+	"""Implementa validação de código do produto duplicado"""
 	print('entrei no code product')
 	while True:
 		try:
-			new_code = int(input('Informe o código de barras do produto: '))
+			entry = input('Informe o código de barras do produto: ').strip()
+			new_code = int(entry)
+
 			if new_code < 0:
 				incorrect_option(error_message["code_error_product"])
 			elif not new_code in list(map(lambda x: x['codigo'], stock)):
