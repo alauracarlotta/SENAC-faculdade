@@ -1,36 +1,12 @@
 import time
 
 # Lista principal para armazenar os dicionários dos produtos
-stock = [
-	{
-		"codigo": 1234,
-		"nome": 'test1',
-		"preco": 50.00,
-		"quantidade": 10
-	},
-	{
-		"codigo": 1235,
-		"nome": 'test1',
-		"preco": 50.00,
-		"quantidade": 10
-	},
-	{
-		"codigo": 1236,
-		"nome": 'test1',
-		"preco": 50.00,
-		"quantidade": 10
-	},
-	{
-		"codigo": 1237,
-		"nome": 'test1',
-		"preco": 50.00,
-		"quantidade": 10
-	}
-]
+stock = []
 
 # Lista com mensagens de erro
 error_message = {
 	"menu_error": "⚠️  Por favor, escolha uma das opções válidas do menu.\n",
+    "calculate_total_stock_error_message": "Não há produtos cadastrados.\n",
 	"code_error_product": "⚠️  Informe um código válido para o produto.\n",
 	"name_error_product": "⚠️  Informe corretamente o nome do produto.\n",
 	"price_error_product": "⚠️  Informe o valor correto do produto.\n",
@@ -86,7 +62,24 @@ def register_product():
     print(stock)
 
 
-# TODO: Implementar lógica de validação de código duplicado
+
+
+#* ok
+#& 3 - Calcula total de estoque
+def calculate_total_stock():
+    """Função que fará a soma de todas as quantidades."""
+    print("\n--- Total de Produtos em Estoque ---")
+
+    if len(stock) > 0:
+        stock_total = sum(map(lambda x: x["quantidade"], stock))
+        print(f'Valor total: {stock_total} itens. \n')
+        return
+    else:
+        print(error_message["calculate_total_stock_error_message"])
+
+
+#* ok
+#& * - codigo
 def code_product():
 	"""Implementa validação de código do produto duplicado"""
 	print('entrei no code product')
