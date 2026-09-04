@@ -230,26 +230,29 @@ def get_product_quantity() -> int:
 		except ValueError:
 			incorrect_option(error_message["quantity_error_product"])
 
+def main(): 
+	# Loop principal de execução do menu
+	while True:
+		menu_option = display_menu()
+		if menu_option == 1:
+			register_product()
 
-# Loop principal de execução do menu
-while True:
-	menu_option = display_menu()
-	if menu_option == 1:
-		register_product()
+		elif menu_option == 2:
+			display_stock()
 
-	elif menu_option == 2:
-		display_stock()
+		elif menu_option == 3:
+			calculate_total_stock()
 
-	elif menu_option == 3:
-		calculate_total_stock()
+		elif menu_option == 0:
+			break
 
-	elif menu_option == 0:
-		break
-
-	else:
-		incorrect_option(error_message["menu_error"])
+		else:
+			incorrect_option(error_message["menu_error"])
 
 
-print('\n...ENCERRANDO O SISTEMA:')
-time.sleep(2)
-print(f'{ITALIC}{BOLD}Obrigado(a) por usar o nosso programa! ✨{RESET}')
+	print('\n...ENCERRANDO O SISTEMA:')
+	time.sleep(2)
+	print(f'{ITALIC}{BOLD}Obrigado(a) por usar o nosso programa! ✨{RESET}')
+
+if __name__ == "__main__":
+    main()
